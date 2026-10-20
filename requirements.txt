@@ -1,0 +1,7 @@
+nama aplikasi: kerjasama adminduk
+sistem:
+    1. ada sistem login
+    2. dashboard menampilkan list kerjasama dalam bentuk file pdf
+    3. jaringan lokal
+    4. notif kalau kerja sama berakhir
+    5. notif akses user 

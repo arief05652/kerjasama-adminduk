@@ -1,0 +1,40 @@
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.crumb {
+  display: inline-flex;
+  align-items: center;
+}
+
+.crumb .sep {
+  margin: 0 0.5rem;
+  color: var(--muted);
+  opacity: 0.6;
+  user-select: none;
+}
+
+.crumb-link {
+  border: 0;
+  padding: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.crumb-link:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.crumb-current {
+  color: var(--text);
+  font-weight: 600;
+}

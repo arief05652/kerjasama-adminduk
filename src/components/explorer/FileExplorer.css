@@ -1,0 +1,18 @@
+.fx {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.fx.dragging {
+  outline: 2px dashed var(--accent);
+  outline-offset: -4px;
+}
+
+.fx-empty {
+  padding: 2.5rem 1rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}

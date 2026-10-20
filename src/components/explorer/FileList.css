@@ -1,0 +1,84 @@
+.fx-head,
+.fx-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 140px 110px 90px;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.85rem;
+}
+
+.fx-head {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+
+.fx-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fx-row {
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--border);
+  cursor: default;
+  outline: none;
+}
+
+.fx-row:last-child {
+  border-bottom: 0;
+}
+
+.fx-row:hover {
+  background: var(--surface);
+}
+
+.fx-row.selected {
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.fx-row.clip {
+  opacity: 0.5;
+}
+
+.fx-row:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.fx-name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fx-icon {
+  flex-shrink: 0;
+}
+
+.fx-date,
+.fx-type,
+.fx-size {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+@media (max-width: 640px) {
+  .fx-head,
+  .fx-row {
+    grid-template-columns: minmax(0, 1fr) 90px;
+  }
+
+  .fx-head span:nth-child(2),
+  .fx-head span:nth-child(3),
+  .fx-date,
+  .fx-type {
+    display: none;
+  }
+}

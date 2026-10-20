@@ -1,0 +1,39 @@
+.fx-view {
+  display: inline-flex;
+  gap: 0.15rem;
+  margin-left: auto;
+  padding: 0.15rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+}
+
+.fx-view-btn {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.fx-view-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.fx-view-btn:hover {
+  color: var(--text);
+}
+
+.fx-view-btn.active {
+  background: var(--accent);
+  color: #fff;
+}

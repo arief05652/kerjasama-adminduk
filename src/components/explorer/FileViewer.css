@@ -1,0 +1,153 @@
+.viewer-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(2px);
+  animation: fade-in 0.15s ease;
+}
+
+.viewer {
+  width: 100%;
+  max-width: 1000px;
+  height: min(85vh, 800px);
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  animation: pop-in 0.18s ease;
+}
+
+.viewer-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.9rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.viewer-title {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.viewer-title strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.95rem;
+}
+
+.viewer-title span {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.viewer-open {
+  font-size: 0.82rem;
+  color: var(--accent);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.viewer-open:hover {
+  text-decoration: underline;
+}
+
+.viewer-close {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.viewer-close:hover {
+  color: var(--text);
+}
+
+.viewer-body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+}
+
+.viewer-frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #fff;
+}
+
+.viewer-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.viewer-media {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.viewer-audio {
+  width: min(480px, 90%);
+}
+
+.viewer-text {
+  align-self: stretch;
+  margin: 0;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: auto;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.viewer-note {
+  padding: 2rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.viewer-note.error {
+  color: #ef4444;
+}
+
+.viewer-link {
+  color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .viewer-backdrop {
+    padding: 0;
+  }
+
+  .viewer {
+    max-width: none;
+    height: 100%;
+    border-radius: 0;
+    border: 0;
+  }
+}
