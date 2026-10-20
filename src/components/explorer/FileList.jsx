@@ -1,4 +1,5 @@
 import { formatDate, formatSize, typeLabel, fileIcon } from '../../lib/format'
+import { effectiveDate } from '../../lib/sort'
 import { itemClass } from './explorerUtils'
 import './FileList.css'
 
@@ -27,7 +28,7 @@ function FileList({ items, selectedId, clipboardId, onSelect, onOpen }) {
               <span className="fx-icon">{fileIcon(item)}</span>
               {item.name}
             </span>
-            <span className="fx-date">{formatDate(item.modified)}</span>
+            <span className="fx-date">{formatDate(effectiveDate(item))}</span>
             <span className="fx-type">{typeLabel(item)}</span>
             <span className="fx-size">{formatSize(item)}</span>
           </li>

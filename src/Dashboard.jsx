@@ -12,6 +12,7 @@ import { useTheme } from './hooks/useTheme'
 import { useLocalStorage } from './hooks/useLocalStorage'
 import { useFileSystem } from './hooks/useFileSystem'
 import { useStorageUsage } from './hooks/useStorageUsage'
+import { buildPeriodOptions, filterByPeriod, sortItems } from './lib/sort'
 import './styles/layout.css'
 
 const MENU = [
@@ -31,6 +32,8 @@ function Dashboard({ user, onLogout }) {
 
   const { theme, toggle } = useTheme()
   const [view, setView] = useLocalStorage('fx-view', 'grid')
+  const [sort, setSort] = useLocalStorage('fx-sort', 'date-desc')
+  const [period, setPeriod] = useState('')
   const fs = useFileSystem()
   const { usage, refresh: refreshUsage } = useStorageUsage()
 
@@ -38,8 +41,12 @@ function Dashboard({ user, onLogout }) {
     refreshUsage()
   }, [fs.tree, refreshUsage])
 
-  const items = fs.items.filter((c) =>
-    c.name.toLowerCase().includes(query.toLowerCase()),
+  const periodOptions = buildPeriodOptions(fs.items)
+  const items = sortItems(
+    filterByPeriod(fs.items, period).filter((c) =>
+      c.name.toLowerCase().includes(query.toLowerCase()),
+    ),
+    sort,
   )
 
   const breadcrumb = active === 'Beranda' ? fs.breadcrumb : [active]
@@ -48,9 +55,15 @@ function Dashboard({ user, onLogout }) {
     if (node.type === 'folder') {
       fs.enter(node.id)
       setQuery('')
+      setPeriod('')
     } else {
       setPreview(node)
     }
+  }
+
+  function navigateTo(index) {
+    fs.navigateTo(index)
+    setPeriod('')
   }
 
   function createFolder() {
@@ -89,6 +102,7 @@ function Dashboard({ user, onLogout }) {
     setActive(label)
     fs.goRoot()
     setQuery('')
+    setPeriod('')
   }
 
   const actions = {
@@ -121,7 +135,7 @@ function Dashboard({ user, onLogout }) {
           onLogout={() => setConfirmLogout(true)}
           onMenu={() => setOpen(true)}
           breadcrumb={breadcrumb}
-          onNavigate={fs.navigateTo}
+          onNavigate={navigateTo}
           query={query}
           onQueryChange={setQuery}
           showSearch={active === 'Beranda'}
@@ -140,6 +154,11 @@ function Dashboard({ user, onLogout }) {
                 hasSelection={!!fs.selected}
                 canPaste={!!fs.clipboard}
                 onViewChange={setView}
+                sort={sort}
+                onSortChange={setSort}
+                period={period}
+                onPeriodChange={setPeriod}
+                periodOptions={periodOptions}
                 onSelect={fs.setSelected}
                 onOpen={openItem}
                 actions={actions}

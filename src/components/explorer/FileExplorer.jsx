@@ -12,6 +12,11 @@ function FileExplorer({
   hasSelection,
   canPaste,
   onViewChange,
+  sort,
+  onSortChange,
+  period,
+  onPeriodChange,
+  periodOptions,
   onSelect,
   onOpen,
   actions,
@@ -37,6 +42,11 @@ function FileExplorer({
         canPaste={canPaste}
         view={view}
         onViewChange={onViewChange}
+        sort={sort}
+        onSortChange={onSortChange}
+        period={period}
+        onPeriodChange={onPeriodChange}
+        periodOptions={periodOptions}
         actions={actions}
       />
 

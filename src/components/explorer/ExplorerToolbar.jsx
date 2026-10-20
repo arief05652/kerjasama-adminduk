@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import Button from '../common/Button'
 import ViewToggle from './ViewToggle'
+import { SORTS } from '../../lib/sort'
 import './ExplorerToolbar.css'
 
 function ExplorerToolbar({
@@ -8,6 +9,11 @@ function ExplorerToolbar({
   canPaste,
   view,
   onViewChange,
+  sort,
+  onSortChange,
+  period,
+  onPeriodChange,
+  periodOptions,
   actions,
 }) {
   const fileInput = useRef(null)
@@ -62,6 +68,35 @@ function ExplorerToolbar({
       >
         Hapus
       </Button>
+
+      <span className="fx-sep" />
+
+      <select
+        className="fx-select"
+        value={period}
+        onChange={(e) => onPeriodChange(e.target.value)}
+        aria-label="Filter periode"
+      >
+        <option value="">Semua waktu</option>
+        {periodOptions.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+
+      <select
+        className="fx-select"
+        value={sort}
+        onChange={(e) => onSortChange(e.target.value)}
+        aria-label="Urutkan"
+      >
+        {SORTS.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
 
       <ViewToggle view={view} onChange={onViewChange} />
     </div>
